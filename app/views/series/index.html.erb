@@ -1,0 +1,75 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Series</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Actors</th>
+      <th>Airs dayofweek</th>
+      <th>Airs time</th>
+      <th>Content raiting</th>
+      <th>First aired</th>
+      <th>Genre</th>
+      <th>Imdb</th>
+      <th>Language</th>
+      <th>Network</th>
+      <th>Network</th>
+      <th>Overview</th>
+      <th>Rating</th>
+      <th>Raring count</th>
+      <th>Runtime</th>
+      <th>Series</th>
+      <th>Series name</th>
+      <th>Status</th>
+      <th>Added</th>
+      <th>Added by</th>
+      <th>Banner</th>
+      <th>Fanart</th>
+      <th>Last updated</th>
+      <th>Poster</th>
+      <th>Zap2it</th>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @series.each do |series| %>
+      <tr>
+        <td><%= series.actors %></td>
+        <td><%= series.airs_dayofweek %></td>
+        <td><%= series.airs_time %></td>
+        <td><%= series.content_raiting %></td>
+        <td><%= series.first_aired %></td>
+        <td><%= series.genre %></td>
+        <td><%= series.imdb_id %></td>
+        <td><%= series.language %></td>
+        <td><%= series.network %></td>
+        <td><%= series.network_id %></td>
+        <td><%= series.overview %></td>
+        <td><%= series.rating %></td>
+        <td><%= series.raring_count %></td>
+        <td><%= series.runtime %></td>
+        <td><%= series.series_id %></td>
+        <td><%= series.series_name %></td>
+        <td><%= series.status %></td>
+        <td><%= series.added %></td>
+        <td><%= series.added_by %></td>
+        <td><%= series.banner %></td>
+        <td><%= series.fanart %></td>
+        <td><%= series.last_updated %></td>
+        <td><%= series.poster %></td>
+        <td><%= series.zap2it_id %></td>
+        <td><%= series.name %></td>
+        <td><%= link_to 'Show', series %></td>
+        <td><%= link_to 'Edit', edit_series_path(series) %></td>
+        <td><%= link_to 'Destroy', series, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Serie', new_series_path %>

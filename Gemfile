@@ -30,6 +30,7 @@ gem 'rencode' # needed for deluge gem
 gem 'deluge'
 
 gem 'httparty'
+gem 'rest-client', '>= 1.8.0'
 
 group :development do
   gem "quiet_assets"

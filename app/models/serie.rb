@@ -41,4 +41,8 @@ class Serie < ActiveRecord::Base
     end
   end
 
+  def tvdb
+    TvdbProxy.client.get_series(name).first
+  end
+
 end

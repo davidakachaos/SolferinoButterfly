@@ -29,6 +29,8 @@ gem 'ttvdb'
 gem 'rencode' # needed for deluge gem
 gem 'deluge'
 
+gem 'httparty'
+
 group :development do
   gem "quiet_assets"
   gem "refills"

@@ -1,31 +1,7 @@
-<%= simple_form_for(@series) do |f| %>
+<%= simple_form_for(@serie, remote: true, :html => {:'data-type' => 'json' , :'data-modelname' => 'serie'} ) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :actors %>
-    <%= f.input :airs_dayofweek %>
-    <%= f.input :airs_time %>
-    <%= f.input :content_raiting %>
-    <%= f.input :first_aired %>
-    <%= f.input :genre %>
-    <%= f.input :imdb_id %>
-    <%= f.input :language %>
-    <%= f.input :network %>
-    <%= f.input :network_id %>
-    <%= f.input :overview %>
-    <%= f.input :rating %>
-    <%= f.input :raring_count %>
-    <%= f.input :runtime %>
-    <%= f.input :series_id %>
-    <%= f.input :series_name %>
-    <%= f.input :status %>
-    <%= f.input :added %>
-    <%= f.input :added_by %>
-    <%= f.input :banner %>
-    <%= f.input :fanart %>
-    <%= f.input :last_updated %>
-    <%= f.input :poster %>
-    <%= f.input :zap2it_id %>
     <%= f.input :name %>
   </div>
 

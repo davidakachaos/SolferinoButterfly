@@ -7,3 +7,10 @@
 
 @import "base/base";
 @import "refills/flashes";
+@import "refills/footer";
+@import "refills/navigation";
+
+.span-columns-11{
+  @include span-columns(10);
+  @include shift(1);
+}

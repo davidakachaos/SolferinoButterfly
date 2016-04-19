@@ -12,7 +12,7 @@ class SeriesController < ApplicationController
 
   # GET /series/new
   def new
-    @series = Serie.new
+    @serie = Serie.new
   end
 
   # GET /series/1/edit
@@ -21,38 +21,45 @@ class SeriesController < ApplicationController
 
   # POST /series
   def create
-    @series = Serie.new(series_params)
-
-    if @series.save
-      redirect_to @series, notice: 'Serie was successfully created.'
-    else
-      render :new
+    @serie = Serie.new(series_params)
+    respond_to do |format|
+      if @serie.save
+        format.html { redirect_to @serie, notice: 'Serie was successfully created.' }
+        format.json # { render json:  }
+      else
+        format.html { render :new }
+        format.json { render json: @serie.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   # PATCH/PUT /series/1
   def update
-    if @series.update(series_params)
-      redirect_to @series, notice: 'Serie was successfully updated.'
-    else
-      render :edit
+    respond_to do |format|
+      if @serie.update(series_params)
+        format.html{ redirect_to @serie, notice: 'Serie was successfully updated.' }
+        format.json
+      else
+        format.html { render :edit }
+        format.json { render json: @serie.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   # DELETE /series/1
   def destroy
-    @series.destroy
+    @serie.destroy
     redirect_to series_url, notice: 'Serie was successfully destroyed.'
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_series
-      @series = Serie.find(params[:id])
+      @serie = Serie.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
     def series_params
-      params.require(:series).permit(:actors, :airs_dayofweek, :airs_time, :content_raiting, :first_aired, :genre, :imdb_id, :language, :network, :network_id, :overview, :rating, :raring_count, :runtime, :series_id, :series_name, :status, :added, :added_by, :banner, :fanart, :last_updated, :poster, :zap2it_id, :name)
+      params.require(:serie).permit(:name)
     end
 end

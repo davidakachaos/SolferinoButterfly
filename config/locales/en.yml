@@ -16,4 +16,7 @@ en:
         "%B %d"
 
   titles:
-    application: Solferinobutterfly
+    application: Welkom
+    series:
+      show: Serie
+      index: Series

@@ -9,14 +9,20 @@
     config/locales/en.yml. For more see:
     https://github.com/calebthompson/title#usage
   %>
-  <title><%= title %></title>
+  <title>Solferino Butterfly<%= title ? " - #{title}" : nil %></title>
   <%= stylesheet_link_tag :application, media: "all" %>
   <%= csrf_meta_tags %>
 </head>
-<body class="<%= body_class %>">
-  <%= render "flashes" -%>
-  <%= yield %>
-  <%= render "javascript" %>
-  <%= render "css_overrides" %>
+<body class="<%= body_class %> outer-container">
+  <div class="wrapper-for-content-outside-of-footer">
+    <%= render 'refills/navigation' %>
+    <%= render "flashes" -%>
+    <div class="span-columns-11">
+      <%= yield %>
+    </div>
+    <%= render "javascript" %>
+    <%= render "css_overrides" %>
+  </div>
+  <%= render 'refills/footer' %>
 </body>
 </html>

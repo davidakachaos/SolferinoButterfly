@@ -2,6 +2,9 @@ class Serie < ActiveRecord::Base
   has_many :episodes, through: :seasons, inverse_of: :serie
   has_many :seasons, inverse_of: :serie
 
+  validates :name, presence: true, uniqueness: true
+
+  after_create :get_from_tvdb
 
   def get_from_tvdb
     serie = TvdbProxy.client.get_series(name).first
@@ -9,6 +12,7 @@ class Serie < ActiveRecord::Base
     Serie.column_names.reject{|f|f == 'id' || f.ends_with?('_at')}.each do |field|
       self.send("#{field}=", serie.send(field)) if serie.respond_to?(field)
     end
+    save!
     serie.episodes # Need to call this to deepen the serie
     serie.seasons.each do |nr, episodes|
       s = self.seasons.where(number: nr).first_or_create
